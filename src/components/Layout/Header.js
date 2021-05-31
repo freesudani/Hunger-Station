@@ -3,8 +3,9 @@ import HeaderCartButton from './HeaderCartButton';
 import mealsImage from '../../assets/meals.jpg';
 import classes from './Header.module.css';
 
-const Header = props => {
-    return <Fragment>
+const Header = (props) => {
+    return (
+     <Fragment>
         <header className={classes.header}>
             <h1>Hunger Station</h1>
             <HeaderCartButton onClick={props.onShowCart}/>
@@ -13,6 +14,7 @@ const Header = props => {
             <img src={mealsImage} alt='table of food' />
         </div>
     </Fragment>
+    );
 };
 
 export default Header;
