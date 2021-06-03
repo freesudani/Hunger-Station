@@ -7,19 +7,17 @@ import classes from './HeaderCartButton.module.css';
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartCtx = useContext(CartContext);
-  
+
   const { items } = cartCtx;
 
   const numberOfCartItems = items.reduce((curNumber, item) => {
     return curNumber + item.amount;
   }, 0);
 
-
-
-  const btnClasses = `${classes.button} ${btnIsHighlighted ?  classes.bump : ''}`;
+  const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`;
 
   useEffect(() => {
-    if (cartCtx.items.length === 0) {
+    if (items.length === 0) {
       return;
     }
     setBtnIsHighlighted(true);
@@ -31,7 +29,7 @@ const HeaderCartButton = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [cartCtx]);
+  }, [items]);
 
   return (
     <button className={btnClasses} onClick={props.onClick}>
